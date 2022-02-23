@@ -1,0 +1,46 @@
+
+ {% extends 'crm/base.html' %}
+ {% block title %}
+SALE
+     
+ {% endblock title %}
+
+{% block content %}
+
+ <br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>STOCK DATA:</h2>
+                <!-- <a class="btn btn-primary  btn-sm btn-block" href="{% url 'createstock' %}">Manage Stock </a> -->
+            <hr>
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>ITEM</th>
+                        <th>Quantity </th>
+                        <th></th>
+                    </tr>
+
+                    {% for item in stock %}
+                        <tr>
+                               <td>{{item.item}}</td>
+                               <td>{{item.quantity}}</td>
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'stockinfo' item.id %}">View</a></td>
+                            {# <td>{{po.PO_Number}}</td> #}
+                         
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+</div>
+    </div>
+
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,56 @@
+dfrom django.forms import ModelForm
+from django import forms
+from .models import *
+from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput
+
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class PlanForm(ModelForm):
+	class Meta:
+		model = Plan
+		fields = '__all__'
+		widgets = {
+            
+            'dateOfCreation': DateInput(),
+            'validity'      : DateInput(),
+            'billingCycle'  : DateInput(),
+            'dueDate'       : DateInput(),
+        }
+		#exclude = []
+
+        
+class ServiceForm(ModelForm):
+	class Meta:
+		model = Service
+		fields = '__all__'
+		widgets = {
+            
+            'dateOfPayment': DateInput(),
+            
+        }
+		exclude = ['name_c','Type','cost']
+
+
+class ProductForm(ModelForm):
+	class Meta:
+		model = Product
+		fields = '__all__'
+		widgets = {
+            
+            'salaryMonth': DateInput(),
+            
+        }
+        # exclude = []
+
+class ComplaintForm(ModelForm):
+    class Meta:
+        model=Complaint
+        fields='__all__'
+        exclude=['ticket_no']
+       
+
+
+

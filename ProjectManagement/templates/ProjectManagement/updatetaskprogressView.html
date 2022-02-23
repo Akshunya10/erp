@@ -1,0 +1,63 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+Task Progress update
+{% endblock title %}
+{% block content %}
+<style type="text/css">
+    .shadowM{
+    box-shadow: 2px 2px 2px 2px rgba(2,0,4,0.2);
+  }
+
+.display-6{
+  font-size: 30px;
+  font-weight: 500
+}
+
+.display-5{
+  font-size: 20px;
+  font-weight: 400
+}
+</style>
+			
+	<div class="container-fluid ">
+<h1 class="display-4">Update Task Progress </h1>
+    <table class="table table-light my-3 shadowM">
+    
+  <thead>
+    <tr>
+      <th scope="col"class="">Member</th>
+      <th scope="col"class="">Task Assigned</th>
+      <th scope="col"class="">Updates</th>
+      <th scope="col"class="">Deadline</th>
+      <th scope="col"class="">Actions</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+
+  	{% for item in Task  %}
+      
+    
+  		
+        {% if item.member.team_member == request.user %}
+            
+         <tr >
+       
+      <td class="" >{{item.member.team_member}}</td>
+      <td class="">{{item.task_assigned}}</td>
+      <td class="">{{item.updates}}</td>
+      <td class="">{{item.task_deadline}}</td>
+        <td><a class="btn btn-primary" href="{% url 'taskprogressupdate' item.id %}">Update</a>      
+    </tr>
+     {% endif %}
+    {% endfor %}
+  
+  </tbody>
+
+</table>
+  		</div>	
+	</div>
+</div>
+
+{% endblock content %}

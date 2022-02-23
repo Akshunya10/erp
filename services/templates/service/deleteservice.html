@@ -1,0 +1,14 @@
+{% extends "service/main.html" %}
+
+{% block content %}
+
+<p>Are you sure you want to delete "{{item}}"?</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <a class = "btn btn-warning" href="{% url 'serv' %}">Cancel</a>
+    <input class = "btn btn-danger" type="submit" name="Confirm">
+
+</form>
+
+{% endblock %}
+

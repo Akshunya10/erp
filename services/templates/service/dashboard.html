@@ -1,0 +1,18 @@
+{% extends "service/main.html" %}
+
+{% block content %}
+
+   <p><span class="fas fa-plus-circle"></span>&nbsp;   overview of service</p>
+
+   <li class="nav-item active">
+      <a class="nav-link" href="{% url 'serv' %}">Service</a>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link" href="{% url 'plan' %}">Plan</a>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link" href="{% url 'prod' %}">Product</a>
+   </li> 
+   
+   
+{% endblock %}

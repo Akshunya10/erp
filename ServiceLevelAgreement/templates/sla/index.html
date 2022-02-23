@@ -1,0 +1,42 @@
+
+<!--load static files-->
+
+{% extends 'sla/main.html' %}
+
+{% block content %}
+
+    {% for user in all_users %}
+        <div>
+           <div>
+               <div class="col-sm-offset-1">
+
+                    <!-- <img src = '{{user.username}}' style="width: 250px;"> -->
+
+                    <!-- <h1> {{user.abc}}</h1>
+                    <h2> {{user.xyz}}</h2> -->
+                    <!--details-->
+                    {% if user.is_authenticated %}
+                       <strong>{{ user.username }}</strong>
+                    {% endif %}
+                    <!-- <a class= 'btn btn-primary btn-sm' href = "/authentication/{{user.id}}/" >View Detail</a>
+
+                    delete-->
+                    <!-- <form action = '/delete/{{user.id}}' method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_id" value="{{user.id}}"/>
+                        <button type="submit" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </form> -->
+                    <!-- favourite-->
+                    <!-- <a href="#" class="btn btn-default btn-sm btn-favourite">
+                        <span class="glyphicon glyphicon-star {% if album.is_favourite %}active{% endif %}"></span>
+                    </a> -->
+
+               </div>
+           </div>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}

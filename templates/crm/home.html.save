@@ -1,0 +1,50 @@
+
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+Home
+{% endblock title %}
+{% block content %}
+<style type="text/css">
+  h1 {
+    /*font-size: 72px;*/
+    background: -webkit-linear-gradient(#09a2de, #3ad6cb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px #333;
+  }
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <center><span style="font-size:100px;font-weight:bold;color:#ebe426">e-Life</span>
+<span style="font-size:20px;font-weight:bold;color:">Powered by K-NET</span>
+
+</center>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <img src="{% static 'images/eerp.jpg' %}" class="img-fluid" alt="Image1" width="70%" height="100%">
+    </div>
+    <div class="col-4">
+
+      <div class="col">
+        <h1 style="font-size:90px">Enterprise</h1>
+      </div>
+
+      <div class="col">
+        <h1 style="font-size:90px">Resource</h1>
+      </div>
+
+      <div class="col">
+        <h1 style="font-size:90px">Planning</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock content %}

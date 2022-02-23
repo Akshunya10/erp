@@ -1,0 +1,47 @@
+
+ {% extends 'crm/base.html' %}
+ {% block title %}
+Transport
+     
+ {% endblock title %}
+
+{% block content %}
+
+ <br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Transport DATA:</h2>
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url 'createtransport' %}">Manage Transport </a>
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url 'createEQ' %}">Manage Equipment </a>
+            <hr>
+
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Equipment</th>
+                        <!-- <th>Quantity </th> -->
+                        <th></th>
+                    </tr>
+
+                    {% for item in transport %}
+                        <tr>
+                               <td>{{item.vehicle_no}}</td>
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'transportinfo' item.id %}">View</a></td>
+                            {# <td>{{po.PO_Number}}</td> #}
+                         
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+</div>
+    </div>
+
+{% endblock %}
+
+
+
+
+

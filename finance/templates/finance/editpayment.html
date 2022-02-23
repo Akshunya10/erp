@@ -1,0 +1,47 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+Payment Update Page
+{% endblock title %}
+{% block content %}
+
+<style>
+    form{
+        width: 100%;
+
+    }
+    
+</style>
+<div class="container mt-5 mb-3">
+    <h1 class='text-center'> Update Payments Entry</h1>
+    <form method='POST' hx-target="body" >
+        {% csrf_token %}
+    <table class="table">
+        <thead>
+            <tr>               
+                <th>Date</th>
+                <th>Particular</th>
+                <th>Debit</th>
+                <th>Credit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>                
+                <td><input type='date' name='dt' value="{{i.date|date:'Y-m-d'}}" ></td>
+                <td><input type='text' name='par' maxlength="100" size='50' value="{{i.particular}}"></td>
+                <td><input type='text' name='dr' value="{{i.debit}}" placeholder='Required 0' required></td>
+                <td><input type='text' name='cr' value="{{i.credit}}" placeholder='Required 0' required></td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div style="text-align: center;">
+    <button type="submit" class='btn btn-primary btn-lg' value='Reset'>Submit</button>
+    <button type="submit" class='btn btn-primary btn-lg' value="Cancel">Cancel</button>
+</div>
+</form>
+ 
+</div>
+    {% endblock %}

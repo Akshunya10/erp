@@ -1,0 +1,62 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% load bootstrap %}
+{% comment %} {% bootstrap_css %}         {# Embeds Bootstrap CSS #} {% endcomment %}
+{% comment %} {% bootstrap_javascript jquery='full' %} {% endcomment %}
+
+{% block extrahead %}       {# Extra Resources Start #}
+{{ form.media }}            {# Form required JS and CSS #}
+{% endblock %} 
+
+{% block content %}
+
+<style type="text/css">
+  
+  label{
+    font-weight: bold
+  }
+  .heading{
+    background:#EEEEEE;
+    padding: 5,
+  }
+
+  #id_description{
+    max-height: 100px
+  }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <div class="">
+              <h5 class="display-5 heading my-3 py-2 px-2">Update Inventory</h5>
+    
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form|bootstrap}}
+                    <hr>
+                    <div class="overflow-auto">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                {# {{ent_form|bootstrap_horizontal:'col-lg-4'}}  #}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    <div class="">
+                        <input class="btn btn-primary" type="submit" name="Submit">
+                    </div>
+                    <hr>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+

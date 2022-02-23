@@ -1,0 +1,183 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+    Project Management
+{% endblock title %}
+{% block content %}
+<style type="text/css">
+  .rowContainer{
+  	justify-content: 'space-around';
+  	margin-bottom: 10px
+
+  }
+	.box{
+		
+		min-height: 50vh;
+			height: 100%;
+			margin-left: 10px;
+	}
+	  .shadowM{
+    box-shadow: 2px 2px 1px 0 rgba(2,0,4,0.2);
+  }
+  .liBottom{
+  	margin-bottom: 10px
+  }
+  .aNoDecoration{
+  	text-decoration: none
+  }
+	
+
+</style>
+
+ <div class="container">
+{% if msg %}
+  <div class="alert alert-dark alert-dismissible fade show my-3" role="alert">
+  <strong>{{ msg }}</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>    
+
+{% endif %}
+
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show my-3" role="alert">
+  <strong>{{ message }}</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div> 
+    {% endfor %}
+
+{% endif %}
+
+
+
+
+
+
+
+
+   <div class="row my-5 ">
+     
+       <div class="col py-5">
+         <img src="{% static "images/pm.jpg" %}" class="img-fluid" alt="Image1" width="100%" height="100%">
+       </div>
+       <div class="col py-5">
+<h1 class="display-1">Project</h1>
+<h4 class="display-1">Management</h4>
+     </div>
+      </div>
+     <div class="row rowContainer my-5 ">
+     	<div class="col bg-light box shadowM">
+			<h1 class="display-5 txt-primary">Project</h1>
+			<ol class="list-group list-group-numbered" >
+            <a  class="aNoDecoration" href="{% url 'project' %}" >
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Create Project</div>
+      {# New projects Initialization #}
+    </div>
+  </li></a>
+  <a  class="aNoDecoration" href="{% url 'totalproject' %}" ><li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Total Projects</div>
+      {# All Projects #}
+    </div>
+    <span class="badge bg-primary rounded-pill">{{total_project}}</span>
+  </li></a>
+
+    <a  class="aNoDecoration " href="{% url "completedproject" %}" >
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Completed Projects</div>
+      {# Completed Projects  #}
+    </div>
+    <span class="badge bg-primary rounded-pill">{{completed}}</span>
+  </li></a>
+  <a  class="aNoDecoration " href="{% url "inprogressproject" %}" >
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">InProgress Projects</div>
+      {# Currently in progress  #}
+    </div>
+    <span class="badge bg-primary rounded-pill">{{inprogress_project}}</span>
+  </li></a>
+
+</ol>
+
+     	</div>
+     	<div class="col bg-light box shadowM">
+     		<h1 class="display-5">Team</h1>
+     				<ol class="list-group list-group-numbered">
+
+              <a class="aNoDecoration" href="{% url 'team' %}">
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Create Team</div>
+      {# Define Project manager and team lead here. #}
+    </div>              
+
+  </li></a>
+         					<a class="aNoDecoration" href="{% url 'teamView' %}">
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold"> View Team</div>
+     {# You can see all teams here. #}
+    </div>     					
+
+  </li></a>
+
+
+    <a class="aNoDecoration" href="{% url 'teammember' %}">
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Add Member </div>
+      {# Add other member to team #}
+    </div>
+  </li></a>
+
+
+    <a class="aNoDecoration" href="{% url 'teammemberview' %}">
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Team Members </div>
+      {# All Team member with their Projects. #}
+    </div>
+  </li></a>
+</ol>
+
+     	</div>
+     	<div class="col bg-light box shadowM">
+     			<h1 class="display-5">Task</h1>
+     					<ol class="list-group list-group-numbered">
+     <a class="aNoDecoration" href="{% url 'task' %}">
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Allocate Task</div>
+      {# Create tasks to team member. #}
+    </div>
+  </li></a>
+    <a class="aNoDecoration" href="{% url 'taskView' %}">
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold"> View Task</div>
+      {# Team members with their tasks #}
+    </div>
+  </li></a>
+
+
+
+<a class="aNoDecoration" href="{% url 'taskprogress' %}">
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Upadate Task Progress</div>
+      {# Update task progress. #}
+    </div>
+  </li></a>
+</ol>
+     	</div>
+     </div>
+    
+   </div>
+
+
+{% endblock content %}

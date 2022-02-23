@@ -1,0 +1,123 @@
+{% extends 'crm/base.html' %}
+
+{% block content %}
+
+<style type="text/css">
+	.box{
+		border: 2px 2px 2px 2px solid red;
+	}
+</style>
+
+	<br>
+<div class="container">
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Company :&ensp; {{company.company_Name}}</h5>
+			<hr>
+			<a class="btn btn-outline-primary  btn-sm btn-block my-2 py-2" href="{% url 'companyupdate' company.id %}">Update Company</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block py-2" href="{% url 'companydelete' company.id %}">Delete Company</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+	  <div class="row justify-content-evenly">
+    <div class="col-4">
+     <h5 >Contact Person</h5>
+     <a href="{% url 'addcontactperson' %}" class="btn btn-primary my-2">Add   <i class="fas fa-plus"></i></a>
+
+     <ol class="list-group list-group-numbered">
+     	{% for item in person %}
+     	<li class="list-group-item">{{item.contact_name}}</li>
+     		
+     	{% endfor %}
+ 
+</ol>
+    </div>
+    <div class="col-4 box">
+       <h5>Projects</h5> 
+            <a href="{% url 'project' %}" class="btn btn-primary my-2">Add   <i class="fas fa-plus"></i></a>
+
+            <ol class="list-group list-group-numbered">
+     	{% for item in project %}
+     	<li class="list-group-item">{{item.project_name}}</li>
+     		
+     	{% endfor %}
+ 
+</ol>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<br>
+
+<br>
+
+<div class="col-md my-2">
+		<div class="card card-body">
+			
+            <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><h4>Details</h4></th>
+      <th scope="col"></th>
+ 
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Company Name</th>
+      <td>{{company.company_Name}}</td>
+    
+    </tr>
+    <tr>
+      <th scope="row">Company Address</th>
+      <td>{{company.company_Address}}</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">Street</th>
+      <td colspan="2">{{company.street}}</td>
+      
+    </tr>
+      <tr>
+      <th scope="row">City</th>
+      <td colspan="2">{{company.city}}</td>
+      
+    </tr> 
+     <tr>
+      <th scope="row">Zip Code</th>
+      <td colspan="2">{{company.zip_code}}</td>
+      
+    </tr> 
+     <tr>
+      <th scope="row">Country</th>
+      <td colspan="2">{{company.country}}</td>
+      
+    </tr> 
+     <tr>
+      <th scope="row">Phone Number</th>
+      <td colspan="2">{{company.company_Phone}}</td>
+      
+    </tr>
+         <tr>
+      <th scope="row">Email</th>
+      <td colspan="2">{{company.company_Phone}}</td>
+      
+    </tr>
+         <tr>
+      <th scope="row">Company Website</th>
+      <td colspan="2">{{company.company_website}}</td>
+      
+    </tr>
+  </tbody>
+</table>
+		</div>
+</div>
+
+</div>
+{% endblock %}

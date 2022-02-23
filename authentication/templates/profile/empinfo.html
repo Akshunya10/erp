@@ -1,0 +1,78 @@
+{% extends 'profile/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Employee :&ensp; {{employee.first_Name}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update Employee</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Employee</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{employee.email_id}}</p>
+			<p>Phone: {{employee.contact}} </p>
+		</div>
+	</div>
+
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="col-md">
+		<div class="card card-body">
+			<h5>Details</h5>
+			<hr>
+			<p>first_name            : {{employee.first_name}}</p>
+            <p>last_name             : {{employee.last_name}}</p>
+            <p>username              : {{employee.username}}</p>
+            <p>email_id              : {{employee.email_id}}</p>
+            <p>dob                   : {{employee.dob}}</p>
+            <p>contact               : {{employee.contact}}</p>
+			<p>address_1             : {{employee.address_1}}</p>
+            <p>address_2             : {{employee.address_2}}</p>
+            <p>city                  : {{employee.city}}</p>
+            <p>state                 : {{employee.state}}</p>
+            <p>country               : {{employee.country}}</p>
+            <p>zip_code              : {{employee.zip_code}}</p>
+            <p>govt_id               : {{employee.govt_id}}</p>  
+            <div class="col-md-7">
+                <div class="btn btn-outline-info">
+                    <p>  : {{employee.id_no}}</p>
+                </div>
+            </div>
+            
+            <p>PersonalID            : {{employee.p_id1}}</p>
+            <div class="col-md-7">
+                <div class="btn btn-outline-info">
+                    <p>&emsp; &emsp; &emsp;  : {{employee.p_id2}}</p>
+                </div>
+            </div>
+            <p>position              : {{employee.position}}</p>
+		</div>
+</div>
+
+
+{% endblock %}

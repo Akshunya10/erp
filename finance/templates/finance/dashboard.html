@@ -1,0 +1,16 @@
+{% extends "crm/base.html" %}
+
+{% block content %}
+
+   <p><span class="fas fa-plus-circle"></span>&nbsp;  overview of finance</p>
+
+   <li class="nav-item active">
+      {# <a class="nav-link" href="{% url 'invoice' %}">Invoice</a> #}
+      <a class="nav-link" href="{% url 'invoices' %}">Invoice</a>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link" href="{% url 'poS' %}">PurchaseOrder</a>
+   </li>
+   
+   
+{% endblock %}

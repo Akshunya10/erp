@@ -1,0 +1,40 @@
+
+ {% extends 'profile/main.html' %}
+
+{% block content %}
+
+ <br>
+
+    <div class="row">
+        <div class="col-md-5">
+            <h5>VENDORS:</h5>
+            <hr>
+            <div class="card card-body">
+                <a class="btn btn-primary  btn-sm btn-block" href="">Add Vendor</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th></th>
+                        <th>Vendor</th>
+                        <th>Vendor contact</th>
+                    </tr>
+
+                    {% for vendor in vendors %}
+                        <tr>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'vendinfo' vendor.id %}">View</a></td>
+                            <td>{{vendor.first_name}}</td>
+                            <td>{{vendor.contact}}</td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+
+

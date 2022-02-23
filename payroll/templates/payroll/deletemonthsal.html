@@ -1,0 +1,20 @@
+{% extends "crm/base.html" %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<p>Are you sure you want to delete "{{item}}"?</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <a class = "btn btn-warning" href="{% url 'monthsal' %}">Cancel</a>
+    <input class = "btn btn-danger" type="submit" name="Confirm">
+
+</form>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+

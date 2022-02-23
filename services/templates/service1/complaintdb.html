@@ -1,0 +1,58 @@
+{% extends 'crm/base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% comment %} {% bootstrap_css %}         {# Embeds Bootstrap CSS #} {% endcomment %}
+{% comment %} {% bootstrap_javascript jquery='full' %} {% endcomment %}
+
+{% block extrahead %}       {# Extra Resources Start #}
+{{ form.media }}            {# Form required JS and CSS #}
+{% endblock %} 
+{% block title %}
+    Ticket
+{% endblock title %}
+{% block content %}
+
+
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-12">
+             <h1 class="display-5 ">All Tickets</h1>
+            <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Ticket No.</th>
+      <th scope="col">Stage</th>
+      <th scope="col">Complaint Handler</th>
+      <th scope="col">Last Update</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+      {% for item in complaint  %}
+          <tr>
+         <td><a href="{% url "complaintview" item.id %}" class="btn btn-outline-primary">{{item.ticket_no}} </a></td>
+
+     
+      <td>{{item.stage}} 
+      <td>{{item.complaint_handler}} 
+      <td>{{item.updatedAt}} 
+     <a href="{% url "complaintdelete" item.id %}" class="btn btn-danger float-end mx-2">Delete</a>
+     <a href="{% url "complaintupdate" item.id %}" class="btn btn-primary float-end">Edit</a>
+      </td>
+    </tr>
+      {% endfor %}
+
+   
+  </tbody>
+</table>
+</div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+<!-- card card-body -->

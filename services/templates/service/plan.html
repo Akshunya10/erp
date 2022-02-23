@@ -1,0 +1,50 @@
+
+{% extends 'service/main.html' %}
+
+{% block content %}
+
+ <br>
+
+    <div class="row">
+        <div class="col-md-5">
+            <h5>PLANS:</h5>
+            <hr>
+            <div class="card card-body">
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url 'createplan' %}">Create Plan</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th></th>
+                        <th>Plan</th>
+                        <th>Duration</th>
+                    </tr>
+
+                    {% for plan in plans %}
+                        <tr>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'planinfo' plan.id %}">View</a></td>
+                            <td>{{plan.planId}}</td>
+                            <td>{{plan.duration}}</td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <h6>Search Plan</h6>
+            <hr>
+            <div class="card card-body">
+                <form method="get">
+
+                <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+            </div>
+	    </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,40 @@
+
+ {% extends 'profile/main.html' %}
+
+{% block content %}
+
+ <br>
+
+    <div class="row">
+        <div class="col-md-5">
+            <h5>COMPANIES:</h5>
+            <hr>
+            <div class="card card-body">
+                <a class="btn btn-primary  btn-sm btn-block" href="">Add Company</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th></th>
+                        <th>Company</th>
+                        <th>Company contact</th>
+                    </tr>
+
+                    {% for company in companies %}
+                        <tr>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'compinfo' company.id %}">View</a></td>
+                            <td>{{company.company_Name}}</td>
+                            <td>{{company.company_Phone}}</td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+
+

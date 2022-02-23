@@ -1,0 +1,40 @@
+
+ {% extends 'profile/main.html' %}
+
+{% block content %}
+
+ <br>
+
+    <div class="row">
+        <div class="col-md-5">
+            <h5>EMPLOYEES:</h5>
+            <hr>
+            <div class="card card-body">
+                <a class="btn btn-primary  btn-sm btn-block" href="">Add Employee</a>
+                <table class="table table-sm">
+                    <tr>
+                        <th></th>
+                        <th>Employee</th>
+                        <th>Employee contact</th>
+                    </tr>
+
+                    {% for employee in employees %}
+                        <tr>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'empinfo' employee.id %}">View</a></td>
+                            <td>{{employee.first_name}}</td>
+                            <td>{{employee.contact}}</td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+
+
+

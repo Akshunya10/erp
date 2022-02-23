@@ -1,0 +1,80 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+    Complaint
+{% endblock title %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col">
+
+			<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Ticket No.</th>
+      <td>{{complaint.ticket_no}}</td>
+   
+    </tr>
+    <tr>
+      <th scope="row">Customer</th>
+      <td>{{complaint.complaint_by}}</td>
+     
+    </tr>
+    <tr>
+      <th scope="row">complaint</th>
+      <td colspan="2">{{complaint.complaint}} </td>
+    </tr>
+       <tr>
+      <th scope="row">description</th>
+      <td colspan="2">{{complaint.description}}</td>
+    </tr>
+       <tr>
+      <th scope="row">complaint_related_to</th>
+      <td colspan="2">{{complaint.complaint_related_to}}</td>
+    </tr>
+     <tr>
+      <th scope="row">complaint_handler</th>
+      <td colspan="2">{{complaint.complaint_handler}}</td>
+    </tr>
+     <tr>
+      <th scope="row">stage</th>
+      <td colspan="2">{{complaint.stage}}</td>
+    </tr>    <tr>
+      <th scope="row">status</th>
+      <td colspan="2">{{complaint.status}}</td>
+    </tr>    <tr>
+      <th scope="row">create on</th>
+      <td colspan="2">{{complaint.created_on}}</td>
+    </tr>  
+    <tr>
+      <th scope="row">solution</th>
+      <td colspan="2">{{complaint.solution}}</td>
+    </tr> 
+      <tr>
+      <th scope="row">Last update</th>
+      <td colspan="2">{{complaint.updatedAt}}</td>
+    </tr>
+   
+  </tbody>
+</table>
+
+ 
+        <td>
+        	<a class="btn btn-primary" href="{% url 'complaintupdate' complaint.id %}">Edit</a> 
+          <a class="btn btn-danger my-3" href="{% url 'complaintdelete' complaint.id %}" >Delete</a></td>
+     
+
+  		
+		</div>
+	</div>
+</div>
+  
+{% endblock content %}

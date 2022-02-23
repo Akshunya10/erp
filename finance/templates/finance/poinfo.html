@@ -1,0 +1,126 @@
+{% extends 'crm/base.html' %}
+{% block title %}
+ PO INFO
+    
+{% endblock title %}
+
+{% block content %}
+
+	<br>
+<div class="container">
+    
+<div class="row">
+	<div class="col-md-5 my-2">
+		<div class="card card-body">
+			{# <h5>PO NUMBER :&ensp; {{po.PO_Number}}</h5> #}
+			<hr>
+			<a class="btn btn-outline-primary  btn-sm btn-block py-2 my-2" href="{% url 'update_po' po.id %}">Update PO</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block py-2" href="{% url 'delete_po' po.id %}">Delete PO</a>
+
+		</div>
+	</div>
+    <div class="col-md-5 ">
+		<div class="card card-body">
+			{# <h5>PO NUMBER :&ensp; {{po.PO_Number}}</h5> #}
+			<hr>
+			<a class="btn btn-outline-primary  btn-sm btn-block py-2 my-2" href="{% url 'popdf' po.id %}">Download PO</a>
+
+		</div>
+	</div>
+
+	{% comment %} <div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{vendor.email_id}}</p>
+			<p>Phone: {{vendor.contact}} </p>
+		</div>
+	</div> {% endcomment %}
+
+</div>
+
+<div class="col-md">
+		<div class="card card-body">
+                                              <table class="table">
+  <thead>
+
+    <tr>
+      <th scope="col"><h4>Details</h4></th>
+      <th scope="col"><h4></h4></th>
+    </tr>
+
+   <tr>
+      <th scope="row">PO Number</th>
+      <td>{{po.PO_Number}}</td>
+        </tr> 
+       <tr>
+      <th scope="row">Vendor</th>
+      <td>{{po.Vendor}}</td>
+        </tr> 
+        
+           <tr>
+      <th scope="row">PO Date</th>
+      <td>{{po.PO_Date}}</td>
+        </tr> 
+            
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+
+            <div class="row">
+                <div class="col-md">
+                    <div class="card card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <tr>
+                                    <th>Service</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                    <th>Discount</th>
+                                    <th>Tax</th>
+                                </tr>
+
+                          
+
+
+                                <tr>
+
+                                    <td>{{po.service}}</td>
+                                    <td>{{po.description}}</td>
+                                    <td>{{po.rate}}</td>
+                                    <td>{{po.Qty}}</td>
+                                    <td>{{po.Discount}}</td>
+                                    <td>{{po.Tax}}</td>
+                                   
+                                </tr>
+                  
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md">
+                    {# <a class="btn btn-sm btn-primary" href="" >ADD Product</a> #}
+                </div>  
+                <div class="col-md-4">
+                    <h6>Total: Rs {{po.Total}}</h6>
+                </div>   
+            </div>
+            
+        </div>
+
+</div>
+			    
+	</div>
+	
+
+
+
+{% endblock %}
+
+

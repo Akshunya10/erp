@@ -1,0 +1,100 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+TeamMember
+{% endblock title %}
+{% block content %}
+ <style >
+
+     .shadowM{
+    box-shadow: 2px 2px 2px 2px rgba(2,0,4,0.2);
+  }
+
+  .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+#id_team{
+  padding: 10px;
+  margin-bottom:5px;
+  min-width: 200px;
+  max-width: 200px;
+}
+#id_team_member{
+  padding: 10px;
+  margin-bottom:5px;
+
+}
+ </style>
+
+
+  <form method="POST">
+    {% csrf_token %}
+  <h1 class="text-center display-5">Add TeamMember</h1>
+
+
+      <main class="form-signin ">
+    
+         <div class="mb-3">
+
+        <label for="exampleFormControlTextarea1 " class="form-label text-left">Team</label><Br>
+                  {{form.team}}
+               
+
+    </div> 
+
+       <div class="mb-3">
+
+        <label for="exampleFormControlTextarea1 " class="form-label text-left">Team Member</label><br>
+                  {{form.team_member}}
+
+    </div> 
+
+    {% for field in form %}
+      <p>
+
+        {% for error in field.errors %}
+            <p style="color:red;">{{error}}</p>
+        {% endfor %}
+        </p>
+
+
+      
+    {% endfor %}
+
+    <button class="w-50 btn btn-lg btn-primary" type="submit">Add</button>
+</main>
+
+
+
+    
+  </form>
+{% endblock content %}

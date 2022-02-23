@@ -1,0 +1,68 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+    Customer
+{% endblock title %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1>Service Info</h1>
+			<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Service id</th>
+      <td>{{service.serviceId}}</td>
+   
+    </tr>   
+     <tr>
+      <th scope="row">Service</th>
+      <td>{{service.name}}</td>
+   
+    </tr> 
+       <tr>
+      <th scope="row">Provider</th>
+      <td>{{service.name_c}}</td>
+   
+    </tr>    
+     <tr>
+      <th scope="row">Type</th>
+      <td>{{service.Type}}</td>
+   
+    </tr>   
+      <tr>
+      <th scope="row">Description</th>
+      <td>{{service.description}}</td>
+   
+    </tr>  
+      <tr>
+      <th scope="row">Cost</th>
+      <td>{{service.rate}}</td>
+   
+    </tr>
+    
+    
+   
+  </tbody>
+</table>
+
+ 
+        <td>
+        	{# <a class="btn btn-primary" href="{% url 'complaintupdate' complaint.id %}">Edit</a>  #}
+          {# <a class="btn btn-danger my-3" href="{% url 'complaintdelete' complaint.id %}" >Delete</a></td> #}
+     
+
+  		
+		</div>
+	</div>
+</div>
+  
+{% endblock content %}

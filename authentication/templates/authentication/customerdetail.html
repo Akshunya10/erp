@@ -1,0 +1,88 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+    Customer
+{% endblock title %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col">
+<h1>Customer Detail</h1>
+
+			<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Customer id</th>
+      <td>{{customer.customer_id}}</td>
+   
+    </tr>
+    <tr>
+      <th scope="row">Firstname</th>
+      <td>{{customer.first_name}}</td>
+     
+    </tr>
+    <tr>
+      <th scope="row">Lastname</th>
+      <td colspan="2">{{customer.last_name}} </td>
+    </tr>
+       <tr>
+      <th scope="row">Email</th>
+      <td colspan="2">{{customer.email_id}}</td>
+    </tr>
+       <tr>
+      <th scope="row">Phone</th>
+      <td colspan="2">{{customer.contact}}</td>
+    </tr>
+     <tr>
+      <th scope="row">Address</th>
+      <td colspan="2">{{customer.address_1}}</td>
+    </tr>   
+     <tr>
+      <th scope="row">City</th>
+      <td colspan="2">{{customer.city}}</td>
+    </tr>  
+      <tr>
+      <th scope="row">State</th>
+      <td colspan="2">{{customer.state}}</td>
+    </tr> 
+       <tr>
+      <th scope="row">Country</th>
+      <td colspan="2">{{customer.country}}</td>
+    </tr>  
+      <tr>
+      <th scope="row">Zip code</th>
+      <td colspan="2">{{customer.zip_code}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Complaints</th>
+      {% for item in complaint%}
+          <tr>
+  <td><a href="{% url "complaintview" item.id %}" class="btn btn-outline-primary">{{item.ticket_no}} </a></td>
+    </tr>
+      {% endfor %}
+    </tr>
+    
+   
+  </tbody>
+</table>
+
+ 
+        <td>
+        	{# <a class="btn btn-primary" href="{% url 'complaintupdate' complaint.id %}">Edit</a>  #}
+          {# <a class="btn btn-danger my-3" href="{% url 'complaintdelete' complaint.id %}" >Delete</a></td> #}
+     
+
+  		
+		</div>
+	</div>
+</div>
+  
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+    Total Projects
+{% endblock title %}
+{% block content %}
+<style type="text/css">
+      .shadowM{
+    box-shadow: 2px 2px 2px 2px rgba(2,0,4,0.2);}
+
+    .display-6{
+  font-size: 30px;
+  font-weight: 500
+}
+
+.display-5{
+  font-size: 20px;
+  font-weight: 400
+}
+  
+</style>
+			
+	<div class="container-fluid">
+<h1 class="display-4">Team Members View</h1>
+    <table class="table table-light my-3 shadowM">
+    
+  <tbody>
+  
+      <th scope="col" class="">Team</th>
+      <th scope="col" class="">Team Project</th>
+      <th scope="col" class="">Member</th>
+      <th scope="col" class="">Actions</th>
+
+  
+
+      {% for item in  member%}
+       <tr >
+      <td class="">{{item.team}}</td>
+      <td class="">{{item.team.project}}</td>
+      <td class="">{{item.team_member}}</td>
+     <td ><a class="btn btn-primary" href="{% url 'teammemberupdate' item.id %}">Edit</a>
+      <a class="btn btn-danger my-3" href="{% url 'teammemberdelete' item.id %}" >Delete</a></td>
+    </tr>
+    {% endfor %}
+   
+  
+  </tbody>
+
+</table>
+  
+</div>
+
+{% endblock content %}

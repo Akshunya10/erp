@@ -1,0 +1,60 @@
+{% extends 'hr/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Staff :&ensp; {{staff.empId}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'update_staff' staff.id %}">Update Staff</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'delete_staff' staff.id %}">Delete Staff</a>
+
+		</div>
+	</div>
+
+	{% comment %} <div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{customer.email_id}}</p>
+			<p>Phone: {{customer.contact}}</p>
+		</div>
+	</div> {% endcomment %}
+
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="col-md">
+		<div class="card card-body">
+			<h5>Details</h5>
+			<hr>
+			<p>Emp Id                 : {{staff.EmpId}}</p>
+			<p>Department             : {{staff.department}}</p>
+            <p>no of holidays allowed : {{staff.no_of_holidays_allowed}}</p>
+            <p>package                : {{staff.package}}</p>
+            <p>Joining Date           : {{staff.Joining_date}}</p>
+            <p>Description            : {{staff.description}}</p>
+            <p>isctive                : {{staff.isactive}}</p>
+        
+		</div>
+</div>
+
+
+{% endblock %}

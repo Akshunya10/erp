@@ -1,0 +1,106 @@
+{% extends 'crm/base.html' %}
+
+{% block content %}
+
+<div class="container">
+	
+<div class="row">
+			<h5 class="display-5">MonthlySalary: {{salary.employee.firstname}}</h5>
+	<div class="col-md-5 my-3">
+		<div class="card card-body">
+			<hr>
+			<a class="btn btn-outline-primary  btn-sm btn-block py-2 my-2" href="{% url 'update_monthsal' salary.id %}">Update MonthlySalary</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block py-2" href="{% url 'delete_monthsal' salary.id %}">Delete MonthlySalary</a>
+
+		</div>
+	</div>
+  <div class="col-md-5">
+		<div class="card card-body">
+			<hr>
+			<a class="btn btn-outline-primary  btn-sm btn-block py-2 my-2" href="{% url 'monthsalpdf' salary.id %}">Download Monthly Salary</a>
+		</div>
+	</div>
+
+	{% comment %} <div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{customer.email_id}}</p>
+			<p>Phone: {{customer.contact}}</p>
+		</div>
+	</div> {% endcomment %}
+
+</div>
+
+<div class="col-md mb-5">
+		<div class="card card-body">
+						<table class="table">
+  <thead>
+
+    <tr>
+      <th scope="col"><h4>Details</h4></th>
+      <th scope="col"><h4></h4></th>
+    </tr>
+
+   <tr>
+      <th scope="row">Name</th>
+      <td>{{salary.employee.firstname}}</td>
+    	</tr> 
+    	 <tr>
+      <th scope="row">Email</th>
+      <td>{{salary.employee}}</td>
+    	</tr>
+   <tr>
+      <th scope="row">Mode Of Payment </th>
+      <td>{{salary.mode_of_payment}}</td>
+    
+    </tr> 
+
+      <tr>
+      <th scope="row">Paid Leaves</th>
+      <td>{{salary.paid_leaves}}</td>
+    
+    </tr>  
+       <tr>
+      <th scope="row">Unpaid Leaves</th>
+      <td>{{salary.unpaid_leaves}}</td>
+    
+    </tr>
+
+      <tr>
+      <th scope="row">Salary Month</th>
+      <td>{{salary.month}}</td>
+    
+    </tr>
+      <tr>
+      <th scope="row">Salary Year</th>
+      <td>{{salary.year}}</td>
+
+    </tr>
+
+       <tr>
+      <th scope="row">Active Days</th>
+      <td>{{salary.working_Days}}</td>
+    
+    </tr>
+       <tr>
+      <th scope="row">Working Days</th>
+      <td>{{salary.working_Days}}</td>
+    
+    </tr>
+       <tr>
+      <th scope="row">Total Salary Amount</th>
+      <td>{{salary.total_Salary_Amount}}</td>
+    
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>	
+		</div>
+</div>
+
+</div>
+
+{% endblock %}

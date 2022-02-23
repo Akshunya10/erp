@@ -1,0 +1,46 @@
+
+ {% extends 'crm/base.html' %}
+ {% block title %}
+ ALL PO
+     
+ {% endblock title %}
+
+{% block content %}
+
+ <br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h5>PURCHASE ORDERS:</h5>
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_po' %}">Add Purchase Order</a>
+            <hr>
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>PO Number</th>
+                        <th>Vendor </th>
+                        <th></th>
+                    </tr>
+
+                    {% for po in pos %}
+                        <tr>
+                               <td>{{po.PO_Number}}</td>
+                               <td>{{po.Vendor}}</td>
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'poinfo' po.id %}">View</a></td>
+                            {# <td>{{po.PO_Number}}</td> #}
+                         
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+</div>
+    </div>
+
+{% endblock %}
+
+
+
+
+

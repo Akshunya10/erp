@@ -1,0 +1,146 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+
+ Update Progress
+{% endblock title %}
+{% block content %}
+ <style >
+
+    .shadowM{
+    box-shadow: 2px 2px 2px 2px rgba(2,0,4,0.2);
+  }
+
+
+
+.display-5{
+  font-size: 20px;
+  font-weight: 400
+}
+
+
+  .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+#id_project{
+  padding: 10px;
+  margin-bottom:5px;
+}
+#id_project_manager{
+  padding: 10px;
+  margin-bottom:5px;
+
+}
+
+
+#id_updates {
+ padding: 10px;
+  margin-bottom:5px;
+
+}
+ </style>
+
+
+  <form method="POST" >
+  <h1 class="text-center display-1"> update</h1>
+    {% csrf_token %}
+
+|
+      <main class="form-signin shadowM">
+
+
+
+
+
+
+
+
+              <div class="mb-3" hidden>
+
+        <label for="exampleFormControlTextarea1 " class="form-label text-left">Team</label><br>
+                  {{form.team}}
+
+
+    </div>
+                 <div class="mb-3" hidden>
+
+        <label for="exampleFormControlTextarea1 " class="form-label text-left">Member</label><br>
+                  {{form.member}}
+
+
+    </div>
+
+         {% for form in form %}
+          
+               {% if forloop.counter >= 2 %}
+                   
+                  <div class="form-floating my-3" hidden>
+
+                      {{form}}
+                  <label for="floatingInput">{{form.label_tag}}</label>
+                     </div>
+               
+               {% endif %}
+             
+       
+                 
+                {% endfor %}
+                  <label for="floatingInput"><label for="id_updates">Updates:</label></label>
+      <div class="form-floating my-3" >
+
+                   {{form.updates}}
+                     </div>
+
+
+    {% for field in form %}
+
+                   
+      <p>
+
+        {% for error in field.errors %}
+            <p style="color:red;">{{error}}</p>
+        {% endfor %}
+        </p>
+
+      
+
+      
+    {% endfor %}
+    
+    <button class="w-100 btn btn-lg btn-primary " type="submit">Update</button>
+</main>
+
+
+
+    
+  </form>
+{% endblock content %}

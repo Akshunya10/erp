@@ -1,0 +1,43 @@
+body{
+    background-image: url('images/background.jpg');
+    /* background-color: darkgray; */
+}
+
+.navbar{
+    border-radius: 0;
+}
+
+.navbar-brand{
+    font-family: 'satisfy';
+}
+
+.header{
+    font-family: 'Trade Winds';
+}
+
+.link-header{
+    font-family: 'Satisfy';
+}
+
+div.d {
+    text-align: justify;
+    text-justify: inter-word;
+    white-space: nowrap; 
+    width: 50px; 
+    overflow: hidden;
+    text-overflow: clip; 
+    border: 1px solid #000000;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  

@@ -1,0 +1,84 @@
+{% extends 'profile/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Vendor :&ensp; {{vendor.first_name}}{{vendor.contact}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update vendor</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete vendor</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{vendor.email_id}}</p>
+			<p>Phone: {{vendor.contact}} </p>
+		</div>
+	</div>
+
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="col-md">
+		<div class="card card-body">
+			<h5>Details</h5>
+			<hr>
+			<p>first_name            : {{vendor.first_name}}</p>
+            <p>last_name             : {{vendor.last_name}}</p>
+            <p>email_id              : {{vendor.email_id}}</p>
+            <p>govt_id               : {{vendor.govt_id}}</p>  
+            <div class="col-md-7">
+                <div class="btn btn-outline-info">
+                    <p>  : {{employee.id_no}}</p>
+                </div>
+            </div>
+            <p>PersonalID            : {{vendor.p_id1}}</p>
+            <div class="col-md-7">
+                <div class="btn btn-outline-info">
+                    <p>&emsp; &emsp; &emsp;  : {{vendor.p_id_link}}</p>
+                </div>
+            </div>
+            <p>contact               : {{vendor.contact}}</p>
+			<p>address_1             : {{vendor.address_1}}</p>
+            <p>address_2             : {{vendor.address_2}}</p>
+            <p>city                  : {{vendor.city}}</p>
+            <p>state                 : {{vendor.state}}</p>
+            <p>country               : {{vendor.country}}</p>
+            <p>zip_code              : {{vendor.zip_code}}</p>
+            <p>company_Name          : {{vendor.company_Name}}</p>
+            <p>company_Address1      : {{vendor.company_Address1}}</p>
+            <p>company_Address2      : {{vendor.company_Address2}}</p>
+            <p>company_Phone         : {{vendor.company_Phone}}</p>
+            <p>company_EmailId       : {{vendor.company_EmailId}}</p>
+            
+            
+            
+		</div>
+</div>
+
+
+{% endblock %}
+
+

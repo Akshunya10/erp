@@ -1,0 +1,69 @@
+{% extends 'crm/base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% comment %} {% bootstrap_css %}         {# Embeds Bootstrap CSS #} {% endcomment %}
+{% comment %} {% bootstrap_javascript jquery='full' %} {% endcomment %}
+
+{% block extrahead %}       {# Extra Resources Start #}
+{{ form.media }}            {# Form required JS and CSS #}
+{% endblock %} 
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+  <h5 class="display-5 heading my-3 py-2 px-2">Add Category</h5>
+
+            <div class="">
+    
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form|bootstrap}}
+                    <hr>
+                    
+                    <div class="">
+                        <input class="btn btn-primary" type="submit" name="Submit">
+                    </div>
+                    <hr>
+                </form>
+    
+            </div>
+        </div>
+        <div class="col-md-6">
+  <h5 class="display-5 heading my-3 py-2 px-2"> Category</h5>
+             <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Category</th>
+      <!-- <th scope="col">Cost</th> -->
+    </tr>
+  </thead>
+  <tbody>
+  
+      {% for item in material  %}
+          <tr>
+    
+        <td>{{item.category}} 
+      </td> 
+           <td>
+             <a href="{% url "deleteEqcategory" item.id %}" class="btn btn-danger float-end">Delete</a>
+		<a href="{% url "updateEqcategory" item.id %}" class="btn btn-primary float-end mx-2">Update</a>
+      </td>
+    </tr>
+      {% endfor %}
+
+   
+  </tbody>
+</table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+<!-- card card-body -->

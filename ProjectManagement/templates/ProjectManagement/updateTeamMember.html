@@ -1,0 +1,103 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+Team Update
+{% endblock title %}
+{% block content %}
+ <style >
+
+  .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+#id_team{
+  padding: 10px;
+  margin-bottom:5px;
+}
+#id_team_member{
+  padding: 10px;
+  margin-bottom:5px;
+
+}
+
+
+ </style>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+       <form method="POST">
+    {% csrf_token %}
+
+
+      <main class="form-signin ">
+  <h1 class="display-5 py-5">Update Team</h1>
+
+         <div class="mb-3">
+       <label for="exampleFormControlTextarea1 " class="form-label text-left">Team</label><br>
+         {{form.team}}
+        </div> 
+
+            <div class="mb-3">
+       <label for="exampleFormControlTextarea1 " class="form-label text-left">Team Member</label><br>
+         {{form.team_member}}
+        </div> 
+
+
+    {% for field in form %}
+      <p>
+
+        {% for error in field.errors %}
+            <p style="color:red;">{{error}}</p>
+        {% endfor %}
+        </p>
+
+        {% if form.non_field_errors %}
+            <div style="color:red;">
+              <p>{{form.non_field_errors}}</p>
+            </div>
+        {% endif %}
+
+      
+    {% endfor %}
+    
+    <button class="w-100 btn btn-lg btn-primary " type="submit">Update</button>
+</main>
+
+
+
+    
+  </form>
+    </div>
+  </div>
+</div>
+ 
+{% endblock content %}

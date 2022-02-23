@@ -1,0 +1,88 @@
+{% extends "crm/base.html" %}
+{% block title %}
+Login
+{% endblock title %}
+{% block content %}
+ <style >
+
+  .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+ </style>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+
+
+  <form method="POST">
+    {% csrf_token %}
+
+
+      <main class="form-signin text-center">
+              <h5 class="display-5 heading my-3 py-2 px-2">Login</h5>
+        <div class="form-floating">
+      <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+
+
+    {% for field in login_form %}
+      <p>
+
+        {% for error in field.errors %}
+            <p style="color:red;">{{error}}</p>
+        {% endfor %}
+        </p>
+
+        {% if login_form.non_field_errors %}
+            <div style="color:red;">
+              <p>{{login_form.non_field_errors}}</p>
+            </div>
+        {% endif %}
+
+      
+    {% endfor %}
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+</main>
+
+
+
+
+    
+  </form>
+        
+      </div>
+    </div>
+  </div>
+ 
+{% endblock content %}

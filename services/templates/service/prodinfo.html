@@ -1,0 +1,43 @@
+{% extends 'crm/base.html' %}
+
+{% block content %}
+
+	<br>
+<div class="container">
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+
+			<a class="btn btn-outline-primary  btn-sm btn-block py-2" href="{% url 'updateproduct' product.id %}">Update Product</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block py-2 my-2" href="{% url 'delete_product' product.id %}">Delete Product</a>
+
+		</div>
+	</div>
+
+	{% comment %} <div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{customer.email_id}}</p>
+			<p>Phone: {{customer.contact}}</p>
+		</div>
+	</div> {% endcomment %}
+
+</div>
+
+
+<div class="col-md">
+		<div class="card card-body">
+			<h5>Details</h5>
+			<hr>
+			<p>Product No        : {{product.Product_no}}</p>
+
+			<p>Product name        : {{product.Product_name}}</p>
+            <p>cost                : {{product.cost}}</p>
+           
+            <p>Product Description : {{product.Product_Description}}</p>
+		</div>
+</div>
+</div>
+
+{% endblock %}

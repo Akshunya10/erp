@@ -1,0 +1,69 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+    Inprogress Projects
+{% endblock title %}
+{% block content %}
+<style type="text/css"> 
+    .shadowM{
+    box-shadow: 2px 2px 2px 2px rgba(2,0,4,0.2);
+  }
+
+.display-6{
+  font-size: 30px;
+  font-weight: 500
+}
+
+.display-5{
+  font-size: 20px;
+  font-weight: 400
+}
+</style>
+			
+	<div class="container-fluid">
+    <div class="row">
+      <div class="col">
+      <h1 class="display-4 txt-primary">InProgress Projects</h1>
+
+  
+    <table class="table table-light my-3 shadowM">
+    
+  <thead>
+    <tr>
+      <th scope="col" class="">Project Name</th>
+      <th scope="col" class="">Description</th>
+      <th scope="col" class="">Start Date</th>
+      <th scope="col" class="">Deadline</th>
+      <th scope="col" class="">Client's Company </th>
+      {# <th scope="col" class="display-6">Contact Person</th> #}
+      <th scope="col" class="">Project Stage</th>
+      <th scope="col" class="">Project Status</th>
+      <th scope="col" class="">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for item in  project%}
+  		 <tr >
+      <td class="">{{item.project_name}}</td>
+      <td class="">{{item.description}}</td>
+      {# <td class="display-5">{{item.start_date}}</td> #}
+      <td class="">{{item.project_deadline}}</td>
+      <td class="">{{item.project_deadline}}</td>
+      <td class="">{{item.client_company_name}}</td>
+      {# <td class="display-5">{{item.contact_person}}</td> #}
+      <td class="">{{item.project_status}}</td>
+      <td class="">{{item.project_complete_or_Inprogress}}</td>
+      <td><a class="btn btn-primary" href="{% url 'projectupdate' item.id %}">Edit</a>
+       <a class="btn btn-danger my-3" href="{% url 'projectdelete' item.id %}">Delete</a></td>
+    </tr>
+  	{% endfor %}
+   
+  
+  </tbody>
+
+</table>
+  		</div>	
+    </div>
+    </div>
+
+{% endblock content %}

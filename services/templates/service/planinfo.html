@@ -1,0 +1,60 @@
+{% extends 'service/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Plan :&ensp; {{plan.planId}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'updateplan' plan.id %}">Update Plan</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'delete_plan' plan.id %}">Delete Plan</a>
+
+		</div>
+	</div>
+
+	{% comment %} <div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{customer.email_id}}</p>
+			<p>Phone: {{customer.contact}}</p>
+		</div>
+	</div> {% endcomment %}
+
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="col-md">
+		<div class="card card-body">
+			<h5>Details</h5>
+			<hr>
+			<p>planId    : {{plan.planId}}</p>
+			<p>Type      : {{plan.Type}}</p>
+            <p>duration         : {{plan.duration}}</p>
+            <p>dateOfCreation  : {{plan.dateOfCreation}}</p>
+            <p>validity         : {{plan.validity}}</p>
+            <p>billingCycle     : {{plan.billingCycle}}</p>
+            <p>dueDate     : {{plan.dueDate}}</p>
+            <p>terms     : {{plan.terms}}</p>
+		</div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+Task
+{% endblock title %}
+{% block content %}
+ <style >
+
+     .shadowM{
+    box-shadow: 2px 2px 2px 2px rgba(2,0,4,0.2);
+  }
+
+  .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#id_member{
+  padding: 10px;
+  margin-bottom:5px;
+  min-width: 48vh;
+  width:100%;
+
+}
+#id_updates{
+  padding: 10px;
+  margin-bottom:5px;
+  min-width: 200px;
+  max-width:200px;
+
+}
+#id_task_deadline{
+  padding: 10px;
+  margin-bottom:5px;
+  min-width: 200px;
+  max-width:200px;
+
+}
+.task_assigned{
+  padding: 10px;
+  margin-bottom:5px;
+  min-width: 200px;
+  max-width:200px;
+
+}
+
+ </style>
+
+
+  <form method="POST">
+    {% csrf_token %}
+  <h1 class="text-center display-4">Allocate Tasks</h1>
+
+
+      <main class="form-signin ">
+      
+              <div class="mb-3">
+
+        <label for="exampleFormControlTextarea1 " class="form-label text-left">Team</label><Br>
+                  <strong>{{teamname}}</strong>
+
+
+    </div> 
+         <div class="mb-3">
+
+        <label for="exampleFormControlTextarea1 " class="form-label text-left">Member</label><Br>
+                  <strong>{{member}}</strong>
+
+
+    </div>            
+
+          <div class="form-floating">
+      <input type="text" name="task_assigned" class="form-control task_assigned" id="floatingInput" placeholder="Task assigned">
+      <label for="floatingInput">Task assigned</label>
+    </div>
+
+  <label for="floatingInput">Updates</label>
+          <div class="form-floating">
+      {{form.updates}}    
+    </div>
+
+      <label for="floatingInput">Deadline</label>
+           <div class="form-floating">
+{{form.task_deadline}}    </div>
+
+
+    {% for field in form %}
+      <p>
+
+        {% for error in field.errors %}
+            <p style="color:red;">{{error}}</p>
+        {% endfor %}
+        </p>
+
+        {% if form.non_field_errors %}
+            <div style="color:red;">
+              <p>{{form.non_field_errors}}</p>
+            </div>
+        {% endif %}
+
+      
+    {% endfor %}
+
+    <button class="w-50 btn btn-lg btn-primary" type="submit">Add</button>
+</main>
+
+
+
+    
+  </form>
+{% endblock content %}

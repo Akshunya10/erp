@@ -1,0 +1,65 @@
+{% extends 'profile/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Customer :&ensp; {{customer.first_name}}{{customer.contact}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update Customer</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Delete Customer</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{customer.email_id}}</p>
+			<p>Phone: {{customer.contact}}</p>
+		</div>
+	</div>
+
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="col-md">
+		<div class="card card-body">
+			<h5>Details</h5>
+			<hr>
+			<p>first_name  : {{customer.email_id}}</p>
+			<p>last_name   : {{customer.contact}}</p>
+            <p>govt_id     : {{customer.govt_id}}</p>
+            <p>&emsp; &emsp; &emsp; {{customer.id_no}}</p>
+            <p>PersonalID  : {{customer.p_id1}}</p>
+            <p>&emsp; &emsp; &emsp; {{customer.p_id_link}}</p>
+            <p>address_1   : {{customer.address_1}}</p>
+            <p>address_2   : {{customer.address_2}}</p>
+            <p>city        : {{customer.city}}</p>
+            <p>state       : {{customer.state}}</p>
+            <p>country     : {{customer.country}}</p>
+            <p>zip_code    : {{customer.zip_code}}</p>
+            <p>createdBy   : {{customer.createdBy}}</p>
+		</div>
+</div>
+
+
+{% endblock %}

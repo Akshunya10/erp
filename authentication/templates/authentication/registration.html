@@ -1,0 +1,263 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% load bootstrap %}
+
+{% block title %}
+SignUp
+{% endblock title %}
+{% block content %}
+ <style >
+
+  .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {a
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+#id_position{
+  padding: 10px;
+  margin-bottom:5px;
+  min-width: 48vh
+}
+#id_create_entry{
+  padding: 10px;
+  margin-bottom:5px;
+ min-width: 48vh
+}
+#id_read_entries{
+  padding: 10px;
+  margin-bottom:5px;
+
+}
+#id_edit_entry{
+  padding: 10px;
+  margin-bottom:5px;
+ min-width: 48vh
+}
+#id_delete_entry{
+  padding: 10px;
+  margin-bottom:5px;
+ min-width: 48vh
+}
+
+.rowdir{
+    
+}
+
+#id_position{
+  max-width:250px;
+  min-width: 250px;
+
+}
+#id_department{
+  max-width:250px;
+  min-width: 250px;
+  padding: 10px;
+}
+ </style>
+ <div class="container">
+   <div class="row">
+     <div class="col-5">
+        <h1 class="display-4">Add Account</h1>
+<form method="POST">
+    {% csrf_token %}
+
+
+      <main class="form-signin ">
+
+        <div class="form-floating">
+      <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+
+        <div class="form-floating">
+      <input type="text" name="first_name" class="form-control" id="floatingInput" placeholder="Firstname">
+      <label for="floatingInput">FullName</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="password" name="password1" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div> 
+
+    <div class="form-floating">
+      <input type="password" name="password2" class="form-control" id="floatingPassword" placeholder="Repeat Password">
+      <label for="floatingPassword">Repeat Password</label>
+    </div>
+
+      <div class="form-floating py-2 my-2">
+
+    <strong>  <label class="form-check-label" for="flexCheckDefault">
+   Position
+     </label></strong>
+      {{form.position}}
+    </div>  
+
+
+        <div class="form-floating py-2 my-2">
+
+    <strong>  <label class="form-check-label" for="flexCheckDefault">
+   Department
+     </label></strong>
+
+      {{form.department}}
+
+    </div>
+
+ <strong>  <label class="form-check-label" for="flexCheckDefault">
+   Admin
+     </label></strong>
+
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="true" name="is_admin">
+  <label class="form-check-label" for="inlineCheckbox1">Yes</label>
+</div>
+
+    <strong>  <label class="form-check-label" for="flexCheckDefault">
+   Company related permissions:
+     </label></strong>
+
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="true" name="company_read_permission">
+  <label class="form-check-label" for="inlineCheckbox1">Read</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="true" name="company_create_permission">
+  <label class="form-check-label" for="inlineCheckbox2">Create</label>
+</div><br>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="true" name="company_edit_permission" >
+  <label class="form-check-label" for="inlineCheckbox3">Edit </label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="true" name="company_delete_permission">
+  <label class="form-check-label" for="inlineCheckbox3">Delete </label>
+</div>
+
+
+    <strong>  <label class="form-check-label" for="flexCheckDefault">
+   Project related permissions:
+     </label></strong><br>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="true" name="project_read_permission">
+  <label class="form-check-label" for="inlineCheckbox1">Read</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="true" name="project_create_permission">
+  <label class="form-check-label" for="inlineCheckbox2">Create</label>
+</div><br>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="true" name="project_edit_permission">
+  <label class="form-check-label" for="inlineCheckbox3">Edit </label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="true" name="project_delete_permission" >
+  <label class="form-check-label" for="inlineCheckbox3">Delete </label>
+</div>
+
+
+    <strong>  <label class="form-check-label" for="flexCheckDefault">
+   Contact Person related permissions:
+     </label></strong><br>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="true" name="contactperson_read_permission">
+  <label class="form-check-label" for="inlineCheckbox1">Read</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="true" name="contactperson_create_permission">
+  <label class="form-check-label" for="inlineCheckbox2">Create</label>
+</div><br>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="true" name="contactperson_edit_permission">
+  <label class="form-check-label" for="inlineCheckbox3">Edit </label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="true" name="contactperson_delete_permission" >
+  <label class="form-check-label" for="inlineCheckbox3">Delete </label>
+</div>
+
+   
+
+    {% for field in form %}
+      <p>
+
+        {% for error in field.errors %}
+            <p style="color:red;">{{error}}</p>
+        {% endfor %}
+        </p>
+
+        {% if form.non_field_errors %}
+            <div style="color:red;">
+              <p>{{form.non_field_errors}}</p>
+            </div>
+        {% endif %}
+
+      
+    {% endfor %}
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">SignUp</button>
+</main>
+
+
+
+    
+  </form>
+     </div>
+          <div class="col-6">
+             <h1 class="display-3 ">Accounts</h1>
+            <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Position</th>
+      <th scope="col">Department</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+      {% for item in accounts  %}
+          <tr>
+      <td>{{item.firstname}}</td>
+      <td>{{item.email}}</td>
+      <td>{{item.position}}</td>
+      <td>{{item.department}}</td>
+	<td><a  href="{% url "userupdate" item.id %}" class="btn btn-primary float-end ">Update</a>
+	</td>
+    </tr>
+      {% endfor %}
+
+   
+  </tbody>
+</table>
+</div>
+   </div>
+ </div>
+ 
+{% endblock content %}

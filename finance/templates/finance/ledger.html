@@ -1,0 +1,105 @@
+
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+Ledger
+{% endblock title %}
+{% block content %}
+
+<style>
+    .ledgerform{
+        border:1px solid black;
+        width: 100%;
+    } 
+    form{
+        width: 100%;        
+    }
+   .card{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+   }
+  
+    </style>
+
+<div class="container-fluid">
+    <div class="row mt-3 mb-3">
+      <div class="col-md-5">
+        <h2> Ledger Creation </h2>
+       
+    <div class='card p-3'>
+        <form method='POST'>
+            {% csrf_token %}
+            <div class="form-group row m-1 mt-3 ">
+                <label for="name" class="col-sm-3 col-form-label ">Name :</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" name="name" placeholder="Name" value="{{data.name}}">
+                </div>
+            </div>
+              <div class="form-group row m-1">
+                <label for="amount" class="col-sm-3 col-form-label">Amount :</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" name="amount" placeholder="Amount">
+                </div>
+              </div> 
+              <div class="form-group row m-1">
+                <label for="dep" class="col-sm-3 col-form-label">Depreciation :</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" name="dep" placeholder="Depreciation">
+                </div>
+              </div>
+              <div class='text-center'>
+              <button type='submit' class='btn btn-primary mt-1'>Create Ledger</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="col-md-7">
+  <h2>Ledger Details</h2>
+  <div class="ledgerform p-3">
+    <div class="table">
+      <table class="table table-sm">
+          <thead>
+            
+              <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Particular</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Depreciation</th>
+                  <th scope="col">Action</th>
+              </tr>
+             
+          </thead>
+           
+<tbody>
+  {% for i in data %}
+  <tr>
+      
+      <th scope="row">{{i.date}}</th>
+      <td>{{i.name}}</td>
+      <td>{{i.amount}}</td>
+      <td>{{i.dep}}</td>      
+      <td><a href='{% url "ledger_delete_page" pk=i.id %}'><i class="far fa-trash-alt fa-lg" style="color:red;"></i></a> | <a href='{% url "updateledger_page" pk=i.id %}'><i class="fas fa-edit fa-lg" style="color:rgb(241, 167, 56);"></i></a></td>
+  </tr>
+  {% endfor %}
+  
+</tbody>
+</table> 
+</div>
+</div>
+
+    
+  </div>
+</div>
+
+
+</div>
+
+
+
+    
+
+        
+
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+Journal
+{% endblock title %}
+{% block content %}
+
+<style>
+    form{
+        width: 100%;
+
+    }
+    
+</style>
+<div class="container mt-5 mb-3">
+    <h1 class='text-center'>Journal Entry</h1>
+    <form method='POST' hx-target="body" >
+        {% csrf_token %}
+    <table class="table">
+        <thead>
+            <tr>               
+                <th>Date</th>
+                <th>Particular</th>
+                <th>Debit</th>
+                <th>Credit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>                
+                <td><input type='date' name='dt'></td>
+                <td><input type='text' name='par' maxlength="100" size='50'></td>
+                <td><input type='text' name='dr' placeholder='Required 0' required></td>
+                <td><input type='text' name='cr' placeholder='Required 0' required></td>
+                
+            </tr>
+        </tbody>
+    </table>
+    <div style="text-align: right;">
+    <button type="submit" class='btn btn-primary btn-lg' value='Reset'>Submit</button>
+</div>
+</form>
+   <hr style="border: 2px solid #0000ff;">
+<div class='result'>
+    <h2> All Details </h2>
+  <div class="ledgerform p-3">
+    <div class="table">
+      <table class="table table-sm">
+          <thead>
+            
+              <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Particular</th>
+                  <th scope="col">Debit</th>
+                  <th scope="col">Credit</th>
+                  <th scope="col">Action</th>
+              </tr>
+             
+          </thead>
+           
+<tbody>
+  {% for i in data %}
+  <tr>
+      
+      <th scope="row">{{i.date}}</th>
+      <td>{{i.particular}}</td>
+      <td>{{i.debit}}</td>
+      <td>{{i.credit}}</td>      
+      <td><a href='{% url "journal_delete_page" pk=i.id %}'><i class="far fa-trash-alt fa-lg" style="color:red;"></i></a> | <a href='{% url "updatejournal_page" pk=i.id %}'><i class="fas fa-edit fa-lg" style="color:rgb(241, 167, 56);"></i></a></td>
+  </tr>
+  {% endfor %}
+  
+</tbody>
+</table> 
+</div>
+</div>
+</div>
+</div>
+    {% endblock %}

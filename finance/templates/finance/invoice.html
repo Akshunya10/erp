@@ -1,0 +1,48 @@
+
+{% extends 'crm/base.html' %}
+{% load bootstrap %}
+{% block content %}
+
+ <br>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="display-4">INVOICES</h3>
+             <a class="btn btn-primary  btn-sm btn-block " href="{% url 'create_invoice' %}">Add Another Invoice</a>
+            <hr>
+            <div class="card card-body">
+               
+                <table class="table table-sm">
+                    <tr>
+                        <th>Invoice No</th>
+                        <th>Client company Name</th>
+                        {# <th>Business</th> #}
+                        <th></th>
+                        {# <th>Invoice Number</th> #}
+                    </tr>
+
+                    {% for invoice in invoices %}
+                        <tr>
+                           
+                            {# <td>{{invoice.Invoice_number}}</td> #}
+                            <td>{{invoice.Invoice_number}}</td>
+                            <td>{{invoice.client_company}}</td>
+                            {# <td>{{invoice.client_company}}</td> #}
+                             <td><a class="btn btn-sm btn-primary " href="{% url 'invinfo' invoice.id %}">View</a></td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+       
+       
+</div>
+    </div>
+
+{% endblock %}
+
+
+
+
+

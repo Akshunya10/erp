@@ -1,0 +1,24 @@
+{% extends "profile/main.html" %}
+
+{% block content %}
+
+   <p><span class="fas fa-plus-circle"></span>&nbsp;   overview of profile</p>
+
+   <li>
+    <a href="{% url 'user' %}" style='font-size:1.2em' >USERS</a>
+   </li>
+   <li>
+    <a href="{% url 'employee' %}" style='font-size:1.2em' >EmployeeProfile</a>
+   </li>
+   <li>
+    <a href="{% url 'company' %}" style='font-size:1.2em' >Company</a>
+   </li>
+   <li>
+    <a href="{% url 'customer' %}" style='font-size:1.2em' >Customer</a>
+   </li>
+   <li>
+    <a href="{% url 'vendor' %}" style='font-size:1.2em' >Vendor</a>
+   </li>
+   
+   
+{% endblock %}

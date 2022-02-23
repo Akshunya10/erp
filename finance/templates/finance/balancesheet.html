@@ -1,0 +1,76 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+Balance Sheet Page
+{% endblock title %}
+{% block content %}
+<style>
+    #side1{        
+        text-align: right; 
+        width: 180px;        
+    }
+    .table{
+        width: 95%;
+       
+    }
+</style>
+
+<div class="container">
+    <form method='POST'>
+        {% csrf_token %}
+       <div class="search mt-4">
+
+            <input type='date' name='sdt' required>
+            <input type='date' name='edt' required>
+            <button type="submit" class='btn btn-primary'>Submit</button>
+        </div>
+
+    </form>
+    <h1 class='text-center mb-1'>Balance Sheet</h1>
+    <div class="table">
+        <table class="table table-sm">
+            <thead>
+              <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Particular</th>
+                    <th scope="col" id='side1'>Debit</th>
+                    <th scope="col" id='side1'>Credit</th>
+                    <th scope="col" id='side1'>Balance</th>
+                </tr>
+               
+            </thead>
+             
+<tbody>
+	{% for i,j in mylist %}
+    <tr>
+        <th scope="row">{{i.date}}</th>
+        <td>{{i.particular}}</td>
+        <td id='side1'>{{i.debit}}</td>
+        <td id='side1'>{{i.credit}}</td>
+        <td id='side1' class='bal'name="balance">{{j}}</td>
+       
+        
+    </tr>
+    {% endfor %}
+    
+</tbody>
+</table>
+</div>
+</div>
+
+<script>
+var balance=document.getElementsByName("balance")
+for(let i=0; i<balance.length;i++)
+{
+
+if (Number(balance[i].innerHTML)<0){
+balance[i].style.color = "red"
+} 
+else{
+balance[i].style.color = "green"
+}
+}
+</script>
+
+
+{% endblock %}

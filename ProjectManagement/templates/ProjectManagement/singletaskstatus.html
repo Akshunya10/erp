@@ -1,0 +1,58 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+    single task status
+{% endblock title %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col">
+
+			<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Project</th>
+      <td>{{task.member.team}}</td>
+   
+    </tr>
+    <tr>
+      <th scope="row">Member</th>
+      <td>{{task.member.team_member}}</td>
+     
+    </tr>
+    <tr>
+      <th scope="row">Task</th>
+      <td colspan="2">{{task.task_assigned}} </td>
+    </tr>
+       <tr>
+      <th scope="row">Status</th>
+      <td colspan="2">{{task.updates}}</td>
+    </tr>
+       <tr>
+      <th scope="row">Deadline</th>
+      <td colspan="2">{{task.task_deadline}}</td>
+    </tr>
+ 
+  </tbody>
+</table>
+
+ 
+        <td>
+        	<a class="btn btn-primary" href="{% url 'taskupdate' task.id %}">Edit</a> 
+          <a class="btn btn-danger my-3" href="{% url 'taskdelete' task.id %}" >Delete</a></td>
+     
+
+  		
+		</div>
+	</div>
+</div>
+  
+{% endblock content %}

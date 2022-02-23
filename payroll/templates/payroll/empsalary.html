@@ -1,0 +1,43 @@
+{% extends 'crm/base.html' %}
+
+{% block content %}
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h5 class="display-5">Salary Packages</h5>
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_empsal' %}">Add Salary Package</a>
+            <hr>
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th></th>
+                        {# <th>EmpId</th> #}
+                    </tr>
+
+                    {% for package in packages %}
+                        <tr>
+                            <td>{{package.employee.firstname}}</td>
+                            <td>{{package.employee}}</td>
+                            <td>{{package.employee.department}}</td>
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'empsalinfo' package.id %}">View</a></td>
+                            {# <td>{{package.empId}}</td> #}
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+</div>
+    </div>
+
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,139 @@
+
+{% load static %}
+<style type="text/css">
+  .shadowM{
+    box-shadow: 0 2px 4px 0 rgba(2,0,0,0.2);
+    margin-bottom: 3px
+  }
+  .mleft{
+margin-left: 20
+  }
+
+  form{
+    width:50%;
+  }
+  .form1{
+    
+    min-width:200px;
+  }
+
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadowM">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}"><Image src='{% static "images/Leanvia-logo.png" %}' width='150px' height='50px' alt="Leanvia-logo"/></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+<!--         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>--->
+        </li>       
+ <li class="nav-item">
+          <a class="nav-link" href="{% url 'projectmanagementHome' %}">Project Management</a>
+        </li>  
+         <li class="nav-item">
+          <a class="nav-link" href="{% url 'createservice' %}">Service</a>
+        </li> 
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Finance
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+
+            <li><a class="dropdown-item" href="{% url 'journal_page' %}">Journal</a></li>
+                        <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item " href="{% url 'receipts_page' %}">Receipts</a></li>
+            <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item " href="{% url 'payment_page' %}">Payments</a></li>
+            <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item " href="{% url 'contra_page' %}">Contra</a></li>
+                        <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item " href="{% url 'ledger_page' %}">Create Ledger</a></li>
+                        <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item " href="{% url 'profit-loss_page' %}">Profit and Loss</a></li>
+                        <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item " href="{% url 'balance_page' %}">Balance Sheet</a></li>
+	    <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item " href="{% url 'invoices' %}">Invoice</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item " href="{% url 'poS' %}">Purchase Order</a></li>
+          </ul>
+        </li>
+
+
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            HR
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+ <!--             <li><a class="dropdown-item" href="{% url 'financeHome' %}">Finance</a></li>
+                        <li><hr class="dropdown-divider"></li> -->
+
+            <li><a class="dropdown-item " href="{% url 'payrollHome' %}">Payroll</a></li>
+          </ul>
+        </li>
+    
+       
+       <li class="nav-item"> 
+        {% if request.user.is_admin %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            ADMIN
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'register' %}">User Accounts</a></li>
+                        <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item " href="{% url 'position' %}">User Positions</a></li>
+            <li><a class="dropdown-item " href="{% url 'department' %}">Departments</a></li>
+            <li><a class="dropdown-item " href="{% url 'business' %}">Business</a></li>
+            <li><a class="dropdown-item " href="{% url 'customers' %}">Customer</a></li>
+            
+          </ul>
+        </li>
+       {% endif %}
+
+        </li> 
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'userdashboard' %}">Dashboard</a>
+        </li>
+          <a class="nav-link" href="{% url 'userlogout' %}" style="color:red;">Logout</a>
+            {% else %}
+         <li class="nav-item">
+          <a class="nav-link" href="{% url 'userlogin' %}" style="color:mediumseagreen;margin-left:700pt;">Login</a>
+      </li>   
+               
+        {% endif %}
+ 
+ 
+
+      </ul>
+   <div class="float-end">
+    
+               {% if request.user.is_authenticated %}
+          <a class="nav-link" ><i class="fas fa-user mx-2 "></i>{{request.user}}</a>
+                <form class="d-flex">
+ <input class="form-control me-2 form1 float-end" type="search" placeholder="Search" aria-label="Search" name="q" id="id_q">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+        {% endif %}
+     
+   </div>
+
+    </div>
+  </div>
+</nav>
+
+        
+        
+
+<script type="text/javascript">
+  document.getElementById("id_q").value="{{query}}"
+</script>

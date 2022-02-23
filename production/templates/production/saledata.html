@@ -1,0 +1,46 @@
+
+ {% extends 'crm/base.html' %}
+ {% block title %}
+SALE
+     
+ {% endblock title %}
+
+{% block content %}
+
+ <br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h5>SALES DATA:</h5>
+                <a class="btn btn-primary  btn-sm btn-block" href="{% url 'createSale' %}">Add Sale Data</a>
+            <hr>
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>ITEM</th>
+                        <th>DATE </th>
+                        <th></th>
+                    </tr>
+
+                    {% for item in sale %}
+                        <tr>
+                               <td>{{item.item}}</td>
+                               <td>{{item.Date}}</td>
+                            <td><a class="btn btn-sm btn-primary" href="{% url 'saleinfo' item.id %}">View</a></td>
+                            {# <td>{{po.PO_Number}}</td> #}
+                         
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+</div>
+    </div>
+
+{% endblock %}
+
+
+
+
+

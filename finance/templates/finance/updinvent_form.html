@@ -1,0 +1,39 @@
+{% extends 'finance/main.html' %}
+{% load static %}
+{% load bootstrap %}
+{% comment %} {% bootstrap_css %}         {# Embeds Bootstrap CSS #} {% endcomment %}
+{% comment %} {% bootstrap_javascript jquery='full' %} {% endcomment %}
+
+{% block extrahead %}       {# Extra Resources Start #}
+{{ form.media }}            {# Form required JS and CSS #}
+{% endblock %} 
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <div class="">
+    
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ent_form|bootstrap}}
+                    
+                    <div class="">
+                        <input class="btn btn-primary" type="submit" name="Submit">
+                    </div>
+                    <hr>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+<!-- card card-body -->

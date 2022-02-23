@@ -1,0 +1,85 @@
+{% extends 'crm/base.html' %}
+{% block title %}
+ Production INFO
+    
+{% endblock title %}
+
+{% block content %}
+
+	<br>
+<div class="container">
+    
+<div class="row">
+	<div class="col-md-5 my-2">
+		<div class="card card-body">
+			<hr>
+			<a class="btn btn-outline-danger  btn-sm btn-block py-2 my-2" href="{% url 'deleteproductmat' productmat.id %}">Delete </a>
+
+		</div>
+	</div>
+
+
+	{% comment %} <div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{vendor.email_id}}</p>
+			<p>Phone: {{vendor.contact}} </p>
+		</div>
+	</div> {% endcomment %}
+
+</div>
+
+<div class="col-md">
+		<div class="card card-body">
+                                          
+
+            <div class="row">
+                <div class="col-md">
+                    <h1>{{productmat.product_name}}</h1>
+                    <!-- <h5>{{productmat.created_date}}</h5> -->
+
+                    <div class="card card-body">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <tr>
+                                    <!-- <th>Product Name</th> -->
+                                    <th>Item</th>
+                                    <th> Quantity</th>
+                                </tr>
+    
+                                <tr>
+
+                                    <!-- <td>{{productmat.product_name}}</td> -->
+                                    {% for material in productmat.material.all %}
+                                    <tr>
+                                        <td>  {{ material.item }}</td>
+                                        <td>  {{ material.quantity }}</td>
+                                    </tr>
+                                    {% endfor %}
+
+                                    <!-- <td>{{productmat.produced_quantity}}</td> -->
+                                
+                                   
+                                </tr>
+                  
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+    
+            
+        </div>
+
+</div>
+			    
+	</div>
+	
+
+
+
+{% endblock %}
+
+

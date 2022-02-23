@@ -1,0 +1,62 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+    Payroll
+{% endblock title %}
+{% block content %}
+<style type="text/css">
+  .rowContainer{
+    justify-content: 'space-around';
+    margin-bottom: 10px
+
+  }
+  .box{
+    
+    min-height: 70vh;
+      height: 100%;
+      margin-left: 10px;
+  }
+    .shadowM{
+    box-shadow: 2px 2px 1px 0 rgba(2,0,4,0.2);
+  }
+  .liBottom{
+    margin-bottom: 10px
+  }
+  .aNoDecoration{
+    text-decoration: none
+  }
+  
+
+</style>
+ <div class="container">
+   <div class="row ">
+     
+       <div class="col-8 my-5">
+         <img src="{% static "images/finance.jpg" %}" class="img-fluid" alt="Image1" width="70%" height="70%">
+       </div>
+       <div class="col my-5">
+<h1 class="display-1">Payroll</h1>
+
+      <ol class="list-group list-group-numbered py-5" >
+  <a  class="aNoDecoration" href="{% url 'empsal' %}" ><li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold"> Salary Packages</div>
+      
+    </div>
+  </li></a>
+  <a  class="aNoDecoration " href="{% url 'monthsala' %}"  >
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Month Salary</div>
+   
+    </div>
+  </li></a>
+
+</ol>
+  
+     </div>
+     </div>
+   </div>
+
+
+{% endblock content %}

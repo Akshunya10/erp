@@ -1,0 +1,39 @@
+{% extends 'crm/base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% comment %} {% bootstrap_css %}         {# Embeds Bootstrap CSS #} {% endcomment %}
+{% comment %} {% bootstrap_javascript jquery='full' %} {% endcomment %}
+
+{% block extrahead %}       {# Extra Resources Start #}
+{{ form.media }}            {# Form required JS and CSS #}
+{% endblock %} 
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+    <h1 class="display-5">Update Vendor</h1>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form|bootstrap}}
+                    <hr>
+                    
+                    <div class="">
+                        <input class="btn btn-primary" type="submit" name="Submit">
+                    </div>
+                    <hr>
+                </form>
+    
+        </div>
+  
+    </div>
+</div>
+
+
+{% endblock %}
+
+<!-- card card-body -->

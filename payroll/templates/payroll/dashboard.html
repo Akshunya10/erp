@@ -1,0 +1,15 @@
+{% extends "payroll/main.html" %}
+
+{% block content %}
+
+   <p><span class="fas fa-plus-circle"></span>&nbsp;   overview of payroll</p>
+
+   <li class="nav-item active">
+      <a class="nav-link" href="{% url 'empsal' %}">EmployeeSalary</a>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link" href="{% url 'monthsalav' %}">MonthlySalary</a>
+   </li>
+   
+   
+{% endblock %}

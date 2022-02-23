@@ -1,0 +1,30 @@
+{% extends 'hr/main.html' %}
+{% load static %}
+{% load bootstrap %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            <div class="">
+    
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{dept_form|bootstrap}}
+                    <hr>
+                    <div class="">
+                        <input class="btn btn-primary" type="submit" name="submit">
+                    </div>
+                    <hr>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+<!-- card card-body -->

@@ -1,0 +1,85 @@
+{% extends 'crm/base.html' %}
+
+{% block content %}
+
+	<br>
+<div class="container">
+	
+<div class="row">
+			<h5 class="display-5">Salary Package: {{package.employee.firstname}}</h5>
+			<hr>
+	<div class="col-md-5 my-2">
+		<div class="card card-body">
+			<a class="btn btn-outline-primary  btn-sm btn-block py-2 my-2" href="{% url 'update_empsal' package.id %}">Update EmpSalary</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block py-2" href="{% url 'delete_empsal' package.id %}">Delete EmpSalary</a>
+
+		</div>
+	</div>
+
+	{% comment %} <div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{customer.email_id}}</p>
+			<p>Phone: {{customer.contact}}</p>
+		</div>
+	</div> {% endcomment %}
+
+</div>
+
+<div class="col-md">
+		<div class="card card-body my-2">
+			<table class="table">
+  <thead>
+
+    <tr>
+      <th scope="col"><h4>Details</h4></th>
+      <th scope="col"><h4></h4></th>
+    </tr>
+
+   <tr>
+      <th scope="row">Name</th>
+      <td>{{package.employee.firstname}}</td>
+    	</tr> 
+    	 <tr>
+      <th scope="row">Email</th>
+      <td>{{package.employee}}</td>
+    	</tr>
+   <tr>
+      <th scope="row">Salary</th>
+      <td>{{package.salary}}</td>
+    
+    </tr>
+
+      <tr>
+      <th scope="row">Date Of Payment</th>
+      <td>{{package.date_Of_Payment}}</td>
+    
+    </tr>
+       <tr>
+      <th scope="row">Unpaid Leaves</th>
+      <td>{{package.unpaid_leaves_allowed}}</td>
+    
+    </tr>
+       <tr>
+      <th scope="row">Paid Leaves Allowed</th>
+      <td>{{package.paid_leaves_allowed}}</td>
+    
+    </tr>
+       <tr>
+      <th scope="row">Comments</th>
+      <td>{{package.comments}}</td>
+    
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+{% endblock %}

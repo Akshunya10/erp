@@ -1,0 +1,441 @@
+{% extends "crm/base.html" %}
+{% load static %}
+{% block title %}
+    UserDashboard
+{% endblock title %}
+{% block content %}
+<style type="text/css">
+	  .rowContainer{
+  	justify-content: 'space-around';
+  	margin-bottom: 10px
+
+  }
+	.box{
+		
+		min-height: 70vh;
+			height: 100%;
+			margin-left: 10px;
+	}
+	  .shadowM{
+    box-shadow: 2px 2px 1px 0 rgba(2,0,4,0.2);
+  }
+  .liBottom{
+  	margin-bottom: 10px
+  }
+  .aNoDecoration{
+  	text-decoration: none
+  }
+</style>
+<div class="container">
+  <div class="container my-5 ">
+  <div class="row row-cols-4">
+
+    <div class="col ">
+<div class="card">
+  <div class="card-header">
+    <h4>Projects</h4>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><table class="table">
+  <thead>
+ 
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Total Projects</th>
+      <td><span class="badge bg-primary px-2 py-2">{{totalprojectnumber}}</span>
+</td>
+
+    </tr>
+        <tr>
+      <th scope="row">Inprogress Projects</th>
+      <td><span class="badge bg-warning px-2 py-2">{{inprogressprojectnumber}}</span>
+</td>
+
+    </tr>
+        <tr>
+      <th scope="row">Completed Projects</th>
+      <td><span class="badge bg-success px-2 py-2">{{completeprojectnumber}}</span>
+</td>
+
+    </tr>
+  
+  </tbody>
+</table></p>
+  </div>
+</div>
+    </div>
+
+    <div class="col">
+ <div class="card">
+  <div class="card-header">
+    <h4>Companies</h4>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><table class="table">
+  <thead>
+ 
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Total Companies</th>
+      <td><span class="badge bg-primary px-2 py-2">{{totalcompanynumber}}</span>
+</td>
+
+
+
+  
+  </tbody>
+</table></p>
+  </div>
+</div>
+    </div>
+    <div class="col-6">
+<div class="card">
+  <div class="card-header">
+   <h4>Finance</h4> 
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <table class="table">
+  <thead>
+ 
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+		<div style="width:500px">
+				
+    <canvas id="myChart" width='400' height='400'></canvas>
+</div>
+</td>
+</tr>
+    <tr>
+      <th scope="row">Total POs</th>
+      <td><span class="badge bg-primary px-2 py-2">{{totalponumber}}</span>
+</td>
+</tr>
+  </tbody>
+</table>     </p>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+  <div class="container my-5 ">
+  <div class="row row-cols-4">
+
+    <div class="col ">
+<div class="card">
+  <div class="card-header">
+    <h4>Accounts</h4>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><table class="table">
+  <thead>
+ 
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Total Accounts</th>
+      <td><span class="badge bg-primary px-2 py-2">{{totalaccountnumber}}</span>
+</td>
+
+    </tr>
+    {% for item in accountswithposition %}
+       <tr>
+      <th scope="row">{{item.position}}</th>
+      <td><span class="badge bg-warning px-2 py-2">{{item.accounts}}</span>
+</td>
+
+    </tr>
+     
+    {% endfor %}
+       
+  
+  </tbody>
+</table></p>
+  </div>
+</div>
+    </div>
+
+    <div class="col">
+ <div class="card">
+  <div class="card-header">
+    <h4>Department</h4>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><table class="table">
+  <thead>
+ 
+  </thead>
+  <tbody>
+    {% for item in accountswithdepartment %}
+       <tr>
+      <th scope="row">{{item.department}}</th>
+      <td><span class="badge bg-warning px-2 py-2">{{item.accounts}}</span>
+</td>
+
+    </tr>
+     
+    {% endfor %}
+       
+
+
+  
+  </tbody>
+</table></p>
+  </div>
+</div>
+    </div>
+    <div class="col-6">
+<div class="card">
+  <div class="card-header">
+   <h4>Business</h4> 
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <table class="table">
+  <thead>
+ 
+      <th scope="row">Business</th>
+      <th scope="row">Owner</th>
+      <th scope="row">Projects</th>
+  </thead>
+  <tbody>
+        {% for item in projectwithbusiness %}
+       <tr>
+      <td scope="row">{{item.business}}</td>
+      <td scope="row">{{item.owner}}</td>
+      <td scope="row">{{item.project}}</td>
+</td>
+
+    </tr>
+     
+    {% endfor %}
+   
+
+
+
+
+  
+  </tbody>
+</table>
+     </p>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+	<div class="row">
+
+		<div class="cols-8">
+			{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show my-3" role="alert">
+  <strong>{{ message }}</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div> 
+    {% endfor %}
+
+{% endif %}
+
+
+
+ <div class="row rowContainer my-5 ">
+     	<div class="col bg-light box shadowM">
+			<h1 class="display-5 txt-primary">Companies</h1>
+      <a href="{% url 'addcompany' %}" class="btn btn-primary my-3">Add new company</a>
+
+				{% if company %}
+			{% for item in company  %}
+			<ol class="list-group list-group-numbered" >
+
+			<a  class="aNoDecoration" href="{% url 'companyinfo' item.id %}" >
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">{{item.company_Name}}</div>
+      			{{item.country}}
+      
+    </div>
+  </li></a></ol>
+					
+				{% endfor %}
+				{% else %}
+			
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">NO MACHES..</div>
+      
+    </div>
+  
+				    
+				{% endif %}
+
+	
+
+
+     	</div>
+     	<div class="col bg-light box shadowM">
+     		<h1 class="display-5">Projects</h1>
+              <a href="{% url 'project' %}" class="btn btn-primary my-3">Add new Projects</a>
+              <a href="{% url 'calenderview' %}" class="btn btn-primary my-3"><i class="fa fa-calendar-alt"></i>  Deadlines</a>
+
+
+     				<ol class="list-group list-group-numbered">
+
+
+				{% if project %}
+			{% for item in project  %}
+			<ol class="list-group list-group-numbered" >
+
+			<a  class="aNoDecoration" href="{% url 'projectinfo' item.id %}" >
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">{{item.project_name}}</div>
+
+      {% if item.project_status == 'PLANNING' %}
+          
+      
+      <div class="progress" style="width:150px">
+  <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">20%</div>
+</div> 
+
+{% elif item.project_status == 'DEVELOPMENT' %}
+  <div class="progress" style="width:150px">
+  <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">40%</div>
+</div>
+
+{% elif item.project_status == 'DEPLOYMENT' %}
+  <div class="progress" style="width:150px">
+  <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">60%</div>
+</div>
+
+{% elif item.project_status == 'TESTING' %}
+  <div class="progress" style="width:150px">
+  <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">80%</div>
+</div> 
+
+{% elif item.project_status == 'COMPLETED' %}
+  <div class="progress" style="width:150px">
+  <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">100%</div>
+</div>
+
+      {% endif %}
+
+    </div>
+  </li></a></ol>
+					
+				{% endfor %}
+				{% else %}
+			
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">NO MACHES..</div>
+      
+    </div>
+  
+				    
+				{% endif %}
+
+
+
+
+
+
+     	</div>
+      
+     	<div class="col bg-light box shadowM">
+     		<h1 class="display-5">Contact Person</h1>
+              <a href="{% url 'addcontactperson' %}" class="btn btn-primary my-3">Add new contact person</a>
+
+     				<ol class="list-group list-group-numbered">
+
+
+				{% if person %}
+			{% for item in person  %}
+			<ol class="list-group list-group-numbered" >
+
+			<a  class="aNoDecoration" href="{% url 'contactperson' item.id %}" >
+  <li class="list-group-item d-flex justify-content-between align-items-start liBottom shadowM">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">{{item.contact_name}}</div>
+      {{item.company_name}}
+
+      
+    </div>
+  </li></a></ol>
+					
+				{% endfor %}
+				{% else %}
+			
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">NO MACHES..</div>
+      
+    </div>
+  
+				    
+				{% endif %}
+
+
+
+
+
+
+     	</div>
+
+
+     </div>
+    
+   </div>
+
+   		</div>	
+	</div>
+</div>
+
+
+<script src="{% static 'crm/js/charts.js'%}"></script> 
+<script>
+console.log("chart")
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var exp={{ expenditure|safe }}
+var ear={{earning|safe}}
+
+var loss={{loss|safe}}
+
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Expenditure','Earning'],
+        // labels: ['Manager', 'HR', 'Employee', 'Others'],
+        datasets: [{
+            // label: 'Number of users',
+            data:[22,33],
+            backgroundColor: [
+               'rgb(60,124,60)',
+               'rgb(229,59,59)',
+          
+            ],
+            borderColor: [
+               'rgb(60,124,60)',
+               'rgb(229,59,59)',
+           
+            ],
+            borderWidth: 1
+        }]
+    },
+     options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Earning & Expenditure'
+      }
+    }
+  },
+});
+</script>
+ 
+{% endblock content %}

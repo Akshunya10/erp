@@ -1,0 +1,23 @@
+{% extends 'sla/main.html' %}
+
+{% block title %}users details{% endblock %}
+
+{% block content %}
+    <!-- <img src = '{{user.username}}' style="width: 250px;"> -->
+
+    <!-- <h1> {{album.album_title}}</h1>
+    <h2> {{album.artist}}</h2> -->
+
+
+    {% for user in username.EmployeeProfile_set.all %}
+        
+        {{ user.first_name }}
+        <!-- {% if song.is_favourite %}
+            <img src = "https://img.icons8.com/small/2x/star.png"/>
+
+        {% endif %} -->
+        <br>
+    {% endfor %}
+
+
+{% endblock %}
